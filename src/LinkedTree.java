@@ -33,6 +33,8 @@ public class LinkedTree {
      * Prints the keys of the tree in the order given by a preorder traversal.
      * Invokes the recursive preorderPrintTree method to do the work.
      */
+
+
     public void preorderPrint() {
         if (root != null) {
             preorderPrintTree(root);      
@@ -324,7 +326,18 @@ public class LinkedTree {
      */
     public static int sumKeysTree(Node root) {
         /*** LAB 10: IMPLEMENT THIS METHOD ***/
-        return 0;
+        int sum =0;
+        if (root==null){
+            return 0;
+        }
+        sum+=root.key;
+        if (root.left!=null) {
+            sum+=sumKeysTree(root.left);
+        }
+        if (root.right!=null){
+            sum+=sumKeysTree(root.right);
+        }
+        return sum;
     }
     
     /*
@@ -336,7 +349,19 @@ public class LinkedTree {
      */
     public int sumAlongPath(int key) {
         /*** LAB 10: IMPLEMENT THIS METHOD ***/
-        return 0;
+        //FIXME
+
+        int sum=0;
+
+        if (key>root.key){
+            while (root.key!=key){
+
+            }
+        }
+        else if (key<root.key) {
+
+        }
+
     }
     
     public static void main(String[] args) {
@@ -351,6 +376,13 @@ public class LinkedTree {
         tree.insert(6, "5's right child");
         tree.insert(4, "2's right child");
         tree.insert(4, "extra");
+
+        LinkedTree tree2 = new LinkedTree();
+        tree2.insert(30,"this is the root");
+        tree2.insert(45, "this is one of 30's children");
+        tree2.insert(15,"this is one of 30's children");
+
+        tree2.levelOrderPrint();
 
         
         System.out.print(" preorder: ");
@@ -391,5 +423,7 @@ public class LinkedTree {
         System.out.print("  inorder: ");
         tree.inorderPrint();
         tree.levelOrderPrint();
+
+        System.out.println("Sum of Keys: "+sumKeysTree(tree.root));
     }
 }
